@@ -13,16 +13,15 @@ def main(labels):
             else:
                 obj[j] = float(obj[j])
         labels[i] = obj
-    res = labels
     # filter small labels
     res2 = []
     res3 = []
-    for i in range(len(res)):
-        if not abs(res[i][0]-res[i][2]) < 2 and not abs(res[i][1]-res[i][3]) < 12:
-            res2.append(res[i])
+    for i in range(len(labels)):
+        if not abs(labels[i][0]-labels[i][2]) < 2 and not abs(labels[i][1]-labels[i][3]) < 12:
+            res2.append(labels[i])
     # filter pedestrians
-        if res[i][4] == 5:
-            res3.append(res[i])
+        if labels[i][4] == 5:
+            res3.append(labels[i])
     return res2, res3
 res = main(["0,1,2.2,3,5", "0, 0, 21, 42, 5"])
 print(res)
