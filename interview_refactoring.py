@@ -3,8 +3,12 @@
 # Copyright 2021 Continental AG
 
 # The code filters and separates box labels with x0, y0, x1, y1 coordinates and a class type
-def main(labels):
+def main(labels):    
     # parse
+
+    res2 = []
+    res3 = []
+
     for i in range(len(labels)):
         obj = labels[i].split(",")
         for j in range(len(obj)):
@@ -14,9 +18,6 @@ def main(labels):
                 obj[j] = float(obj[j])
         labels[i] = obj
     # filter small labels
-    res2 = []
-    res3 = []
-    for i in range(len(labels)):
         if not abs(labels[i][0]-labels[i][2]) < 2 and not abs(labels[i][1]-labels[i][3]) < 12:
             res2.append(labels[i])
     # filter pedestrians
